@@ -51,6 +51,46 @@ def checkio(text):
     return chr(max_ord_letter)
 
 
+
+import string
+def checkio2(text):
+    """
+    We iterate through latyn alphabet and count each letter in the text.
+    Then 'max' selects the most frequent letter.
+    For the case when we have several equal letter,
+    'max' selects the first from they.
+    """
+    text = text.lower()
+    return max(string.ascii_lowercase, key=text.count)
+
+from string import ascii_lowercase as letters
+def checkio3(test):
+    
+    checkio = lambda text: max(letters, key=text.lower().count)
+
+
+
+from collections import Counter
+def checkio4(text):
+    
+    count = Counter([x for x in text.lower() if x.isalpha()])
+    m = max(count.values())
+    return sorted([x for (x, y) in count.items() if y == m])[0]
+
+
+def checkio5(text):
+    ltext = [ch for ch in text.lower() if ch.isalpha()]
+    maxCh = ''
+    maxN = 0
+    for ch in sorted(ltext):
+        if ltext.count(ch) > maxN:
+            maxCh, maxN = ch, ltext.count(ch)
+    return maxCh
+
+
+checkio6=lambda t:max('abcdefghijklmnopqrstuvwxyz',key=t.lower().count)
+
+
 if __name__ == '__main__':
     
 
